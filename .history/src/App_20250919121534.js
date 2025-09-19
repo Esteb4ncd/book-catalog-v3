@@ -1,0 +1,65 @@
+// import React from "react";
+// import Book from "./components/Book";
+// import booksData from "./data/books.json"; // 👈 local JSON import
+// import "./App.css";
+
+// function App() {
+//   return (
+//     <div className="app">
+//       <header className="header">
+//         <h1>📚 My Book Catalog</h1>
+//       </header>
+
+//       <main className="content">
+//         {/* Render books from local JSON */}
+//         {booksData.map((book) => (
+//           <Book key={book.isbn13} book={book} />
+//         ))}
+
+//         {/* Add button */}
+//         <button className="add-button">+ Add</button>
+//       </main>
+
+//       <footer className="footer">
+//         <p>© 2025 My Book Catalog - V2</p>
+//       </footer>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React, { useState } from "react";
+import Book from "./components/Book";
+import data from "../data/books.json"; // adjust path if needed
+import "./App.css";
+
+function App() {
+  // load books.json into state
+  const [books] = useState(data);
+
+  return (
+    <div className="app">
+      <header className="header">
+        <h1>📚 My Book Catalog V2</h1>
+      </header>
+
+      <main className="content">
+        <div className="book-grid">
+          {books.map((book) => (
+            <Book key={book.isbn13} book={book} />
+          ))}
+
+          {/* Add button in the grid */}
+          <button className="add-button">+ Add</button>
+        </div>
+      </main>
+
+      <footer className="footer">
+        <p>© 2025 My Book Catalog - V2</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
